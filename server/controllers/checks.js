@@ -63,7 +63,7 @@ module.exports = {
             })
             .then(result => {
                 if (!result) {
-                    console.log(err)
+                    console.log('something went wrong here')
                     return res.status(404).json({ message: 'Invalid Credentialss' })
                 }
                 const token = jwt.sign(
