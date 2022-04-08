@@ -1,5 +1,0 @@
-{
-    "env": {
-        "JWT_KEY": "this_is_the_jsonwebtoken_key"
-    }
-}
