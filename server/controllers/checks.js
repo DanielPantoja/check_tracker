@@ -40,15 +40,15 @@ module.exports = {
                                     return res.status(200).json({ token: token, expiresIn: 3600, userId: user._id })
                                 })
                                 .catch(err => {
-                                    return res.status(404).json({ message: 'Internal database error', error: err.errors })
+                                    return res.status(404).json({ message: 'Internal database error, sorry', error: err.errors })
                                 }
-                                )
+                            )
                         }
                     })
                 }
             })
             .catch(err => {
-                return res.status(404).json({ message: 'Internal database error', error: err.errors })
+                return res.status(404).json({ message: 'Internal database error, cannot find User', error: err.errors })
             })
     },
     loginUser: (req, res) => {
