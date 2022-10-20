@@ -63,7 +63,8 @@ module.exports = {
             })
             .then(result => {
                 if (!result) {
-                    return res.status(404).json({ message: 'Invalid Credentials' })
+                    console.log(err)
+                    return res.status(404).json({ message: 'Invalid Credentialss' })
                 }
                 const token = jwt.sign(
                     { email: fetchedUser.email, userId: fetchedUser._id },
@@ -73,7 +74,8 @@ module.exports = {
                 return res.status(200).json({ token: token, expiresIn: 3600, userId: fetchedUser._id });
             })
             .catch(err => {
-                //at this part max would change the authstatuslistner 
+                //at this part max would change the authstatuslistner
+                console.log(err)
                 return res.status(404).json({ message: 'Invalid Credentials', error: err })
             });
     },
