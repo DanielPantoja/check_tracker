@@ -24,7 +24,3 @@ const EntrySchema = new mongoose.Schema({
 });
 mongoose.model("Entry", EntrySchema); 
 module.exports = EntrySchema
-
-
-//im thinking i use the jobId because i could find entrys 
-//question is how to get check data with just job id

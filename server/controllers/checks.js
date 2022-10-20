@@ -10,12 +10,12 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 module.exports = {
-    createUser: (req, res) => {//this function orginally used 401 codes
+    createUser: (req, res) => {
         User.find({ email: req.body.email })
             .exec()
             .then(user => {
-                if (user.length >= 1) {//need to test this to make sure it doesnt crash app
-                    return res.status(404).json({ message: "User with this email exists" })//User with this email exists 
+                if (user.length >= 1) {
+                    return res.status(404).json({ message: "User with this email exists" })
                 }
                 if (req.body.password.length <= 7) {
                     return res.status(404).json({ message: "Password must be atleast 8 charcters" })
@@ -35,7 +35,7 @@ module.exports = {
                                     password: hash
                                 });
                             user.save()
-                                .then(() => {//test to see if this works or do i need to use a variable like result 
+                                .then(() => {
                                     const token = jwt.sign({ email: user.email, userId: user._id }, process.env.JWT_KEY, { expiresIn: "1h" });
                                     return res.status(200).json({ token: token, expiresIn: 3600, userId: user._id })
                                 })
@@ -63,7 +63,6 @@ module.exports = {
             })
             .then(result => {
                 if (!result) {
-                    console.log('something went wrong here')
                     return res.status(404).json({ message: 'Invalid Credentialss' })
                 }
                 const token = jwt.sign(
@@ -75,20 +74,19 @@ module.exports = {
                 return res.status(200).json({ token: token, expiresIn: 3600, userId: fetchedUser._id });
             })
             .catch(err => {
-                //at this part max would change the authstatuslistner
                 console.log(err)
                 return res.status(404).json({ message: 'Invalid Credentials', error: err })
             });
     },
     //***********************CREATES***********************
-    createJob: (req, res) => {//should this create and update user that way it can fail as a whol
+    createJob: (req, res) => {
         Job.create(req.body).then(job => {
             User.findByIdAndUpdate({ _id: req.body.uId }, { $push: { jobs: job } })
                 .then(result => {
                     return res.status(200).json({ results: result })
                 })
                 .catch(err => {
-                    job.delete()//deletes job since it wont be on a users job array for whatever reason need to test if it works
+                    job.delete()
                     return res.status(404).json({ message: 'Failed to update user job list', error: err.errors })
                 })
         })
@@ -252,7 +250,7 @@ module.exports = {
     deleteCheck: (req, res) => {
         Check.deleteOne({ _id: req.params.cId })
             .then(Job.findOneAndUpdate({ _id: req.params.jId }, { $pull: { checks: { _id: req.params.cId } } })
-                .then(Entry.deleteMany({ checkId: cId })//need to test this 
+                .then(Entry.deleteMany({ checkId: cId })
                     .then(result => {
                         return res.status(200).json({ results: result })
                     })
@@ -282,7 +280,7 @@ module.exports = {
                 return res.status(404).json({ message: "Failed to delete entry", errors: err.errors })
             })
     },
-    //***********************COMPLICATED_GETS*********************** BELOW IS THE OG FUNCTION
+    //***********************COMPLICATED_GETS***********************
     getAllUserData: (req, res) => {
         let timeTotal = 0;
         let earningTotal = 0;
