@@ -1,0 +1,71 @@
+<h1 style="margin-top: 2rem;">All Entrys</h1>
+<div class="titleBox">
+  <h1>Total Earnings</h1>
+  <h1>Total Time</h1>
+</div>
+<div class="titleBox">
+  <h1>${{earningTotal | number : '1.2-2'}}</h1>
+  <h1>{{timeTotal | number : '1.2-2'}}</h1>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr id='row'>
+      <th scope="col">Job</th>
+      <th scope="col">Time Total</th>
+      <th scope="col">Gross Total</th>
+      <th scope="col">Net Total</th>
+      <th scope="col">Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let e of entrys'>
+      <td>{{e.job}}</td>
+      <td>{{e.timeTotal | number : '1.2-2'}}</td>
+      <td>${{e.grossTotal | number : '1.2-2'}}</td>
+      <td>${{e.netTotal | number : '1.2-2'}}</td>
+      <td>{{e.date[5]}}{{e.date[6]}}/{{e.date[8]}}{{e.date[9]}}/{{e.date[0]}}{{e.date[1]}}{{e.date[2]}}{{e.date[3]}}</td>
+      <td>
+        <div class="btn-group">
+          <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+          <div class="dropdown-menu" style="height: 83.5px;">
+            <div class="dropdown-menu-row" style="height: 100%;">
+              <a class="btn btn-outline-warning my-2 my-sm-0" [routerLink]="['/entry-edit',e.id]">Edit</a>
+              <a class="btn btn-outline-warning my-2 my-sm-0" (click)='onDeleteEntry(e.id)'>Delete</a>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="entrys.length == 0" class="placeholder">
+  <p>no data</p>
+</div>
+<div class="mobileData" *ngFor="let e of entrys">
+  <div class="mobileData-header">
+    <p>{{e.job}}: {{e.date[5]}}{{e.date[6]}}/{{e.date[8]}}{{e.date[9]}}/{{e.date[0]}}{{e.date[1]}}{{e.date[2]}}{{e.date[3]}}</p>
+    <div class="btn-group">
+      <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+      <div class="dropdown-menu" style="height: 83.5px;">
+        <div class="dropdown-menu-row" style="height: 100%;">
+          <a class="btn btn-outline-warning my-2 my-sm-0" [routerLink]="['/entry-edit',e.id]">Edit</a>
+          <a class="btn btn-outline-warning my-2 my-sm-0" (click)='onDeleteEntry(e.id)'>Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mobileData-body">
+    <div class="mobileData-body-earning">
+        <p>Gross Earning: ${{e.grossTotal| number : '1.2-2'}}</p>
+        <p>Net Earning: ${{e.netTotal | number : '1.2-2'}}</p>
+    </div>
+    <div class="mobileData-body-time">
+      <p>Total Time:</p>
+      <p>{{e.timeTotal | number : '1.2-2'}}</p>
+    </div>
+  </div>
+</div>
+<div class="mobilePlaceholder" *ngIf="entrys.length == 0" >
+  <p>no data.</p>
+</div>

@@ -1,0 +1,28 @@
+<div class="card border-black mb-3">
+  <div class="card-header" style="width: 100%"><h1>Sign Up</h1></div>
+  <div class="card-body">
+    <form (submit)='createUser(signupForm)' #signupForm='ngForm'>
+      <div class="form-group">
+        <input class="form-control btn-outline-warning" type="text"id="first_name"name="first_name" ngModel required/>
+        <label for="first_name">First Name</label>
+      </div>
+      <div class="form-group">
+        <input class="form-control btn-outline-warning"type="text"id="last_name"name="last_name" ngModel required/>
+        <label for="last_name">Last Name</label>
+      </div>
+      <div class="form-group">
+        <input class="form-control btn-outline-warning"type="text"id="email"name="email" ngModel required >
+        <label for="email">Email</label>
+      </div>
+      <div class="form-group">
+        <input class="form-control btn-outline-warning"type="password"id="password"name="password" ngModel required >
+        <label for="password">Password</label>
+      </div>
+      <div class="form-group">
+        <input class="form-control btn-outline-warning"type="password"id="password_confirm"name="password_confirm" ngModel required>
+        <label for="password_confirm">Password Confirm</label>
+      </div>
+      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit" value="Sign Up">Sign Up</button>
+    </form>
+  </div>
+</div>

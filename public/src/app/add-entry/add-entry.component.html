@@ -1,0 +1,20 @@
+  <div class="card border-black mb-3">
+    <div class="card-header"><h1>Add Entry</h1></div>
+    <div class="card-body">
+      <form (submit)="createEntry(entryForm)" #entryForm='ngForm'>
+        <div class="form-group">
+          <input  class="form-control btn-outline-warning" type="number" name="hours" min="59" ngModel #hoursInput="ngModel" required hours>
+          <label for="hours">Hours</label>
+        </div>
+        <div class="form-group">
+          <input  class="form-control btn-outline-warning" type="number" name="minutes" ngModel #minutesInput="ngModel" required minutes>
+          <label for="minutes">Minutes</label>
+        </div>
+        <div class="form-group">
+          <input class="form-control btn-outline-warning" type="date" name="date" ngModel #dateInput="ngModel" required date>
+          <label for="date">Date</label>
+        </div>
+        <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Enter</button>
+      </form>
+    </div>
+  </div>

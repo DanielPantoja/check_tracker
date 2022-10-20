@@ -1,0 +1,84 @@
+<h1 style="margin-top: 2rem;">{{job.title}}</h1>
+<div class="titleBox">
+  <h1>Pay Rate: ${{job.payrate | number : '1.2-2'}} </h1>
+  <h1>Tax Rate: %{{job.taxrate}}</h1>
+</div>
+<div class="titleBox">
+  <h1>Total Earnings</h1>
+  <h1>Total Time</h1>
+</div>
+<div class="titleBox">
+  <h1>${{earningTotal | number : '1.2-2'}}</h1>
+  <h1>{{timeTotal | number : '1.2-2'}}</h1>
+</div>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Start</th>
+      <th scope="col">End</th>
+      <th scope="col">Total Time</th>
+      <th scope="col">Net Total</th>
+      <th scope="col">Gross Total</th>
+      <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let c of checks;">
+      <td>{{c.start[5]}}{{c.start[6]}}/{{c.start[8]}}{{c.start[9]}}/{{c.start[0]}}{{c.start[1]}}{{c.start[2]}}{{c.start[3]}}</td>
+      <td>{{c.end[5]}}{{c.end[6]}}/{{c.end[8]}}{{c.end[9]}}/{{c.end[0]}}{{c.end[1]}}{{c.end[2]}}{{c.end[3]}}</td>
+      <td>{{c.timeTotal | number : '1.2-2'}}</td>
+      <td>${{c.netTotal | number : '1.2-2'}}</td>
+      <td>${{c.grossTotal | number : '1.2-2'}}</td>
+      <td>
+        <div class="btn-group">
+          <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+          <div class="dropdown-menu">
+            <div class="dropdown-menu-row">
+              <a class="btn btn-outline-warning my-2 my-sm-0" [routerLink]="['/entrys',c.id]">Entrys</a>
+              <a class="btn btn-outline-warning my-2 my-sm-0" [routerLink]="['/add-entry',c.id]">Add Entry</a>
+            </div>
+            <div class="dropdown-menu-row">
+              <a class="btn btn-outline-warning my-2 my-sm-0" [routerLink]="['/check-edit',c.id]">Edit</a>
+              <a class="btn btn-outline-warning my-2 my-sm-0" (click)='onDeleteCheck(c.id)'>Delete</a>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="placeholder" *ngIf="checks.length == 0">
+  <p>no data</p>
+</div>
+<div class="mobileData" *ngFor="let c of checks">
+  <div class="mobileData-header">
+    <p>{{c.start[5]}}{{c.start[6]}}/{{c.start[8]}}{{c.start[9]}}/{{c.start[0]}}{{c.start[1]}}{{c.start[2]}}{{c.start[3]}} - {{c.end[5]}}{{c.end[6]}}/{{c.end[8]}}{{c.end[9]}}/{{c.end[0]}}{{c.end[1]}}{{c.end[2]}}{{c.end[3]}}</p>
+    <div class="btn-group">
+      <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+      <div class="dropdown-menu">
+        <div class="dropdown-menu-row">
+          <a class="btn btn-outline-warning my-2 my-sm-0"[routerLink]="['/entrys',c.id]">Entrys</a>
+          <a class="btn btn-outline-warning my-2 my-sm-0" [routerLink]="['/add-entry',c.id]">Add Entry</a>
+        </div>
+        <div class="dropdown-menu-row">
+          <a class="btn btn-outline-warning my-2 my-sm-0" [routerLink]="['/check-edit',c.id]">Edit</a>
+          <a class="btn btn-outline-warning my-2 my-sm-0" (click)='onDeleteCheck(c.id)'>Delete</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mobileData-body">
+    <div class="mobileData-body-earning">
+        <p>Gross Earning: ${{c.grossTotal | number : '1.2-2'}}</p>
+        <p>Net Earning: ${{c.netTotal | number : '1.2-2'}}</p>
+    </div>
+    <div class="mobileData-body-time">
+      <p>Total Time:</p>
+      <p>{{c.timeTotal | number : '1.2-2'}}</p>
+    </div>
+  </div>
+</div>
+<div class="mobilePlaceholder" *ngIf="checks.length == 0" >
+  <p>no data.</p>
+</div>
+

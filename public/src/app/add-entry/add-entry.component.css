@@ -1,0 +1,7 @@
+.card-body{
+    margin: 0;
+}
+input{
+    max-width: 179px;
+    margin-inline: auto!important;
+}

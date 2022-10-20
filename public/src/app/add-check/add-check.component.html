@@ -1,0 +1,16 @@
+<div class="card border-black mb-3">
+  <div class="card-header"><h1>Add Check</h1></div>
+  <div class="card-body">
+  <form (submit)="createCheck(checkForm)" #checkForm="ngForm">
+    <div class="form-group">
+      <input class="form-control btn-outline-warning" type="date" name="start" ngModel #startInput="ngModel" required start />
+      <label for="start">Start</label>
+    </div>
+    <div class="form-group">
+      <input class="form-control btn-outline-warning" type="date" name="end" ngModel #endInput="ngModel" required end />
+      <label for="end">End</label>
+    </div>
+    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Enter</button>
+  </form>
+  </div>
+</div>

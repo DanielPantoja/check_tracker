@@ -1,0 +1,239 @@
+html,body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #e8e5da;
+}
+table {
+  width: 75% !important;
+  margin: 2rem auto;
+  border: 3px solid #212529;
+  background-color: white;
+  font-size: 18px;
+  display: table;
+  margin-bottom: 0!important;
+}
+thead tr {
+  border-bottom: 3px solid #ffc106;
+}
+th {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle !important;
+  background-color: #212529;
+  color: #ffc106;
+}
+td {
+  text-align: center;
+  vertical-align: middle !important;
+}
+input {
+  color: black!important;
+  text-align: center;
+}
+h1 {
+  text-align: center;
+  margin: auto;
+}
+button {
+  margin: auto;
+}
+div {
+  margin: auto;
+  text-align: center;
+}
+/* EVERYTHING ABOVE ARE BASIC HTML TAGS */
+/* EVERYTHING BELOW IS CUSTOM/BOOTSTRAP */
+.dropdown-menu {
+  padding: 0 !important;
+  margin: 0;
+  height: 167px;
+  width: 390px;
+  transform: translate3d(-350px, 52px, 0px)!important;
+}
+.dropdown-menu-row {
+  height: 50%;
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+}
+.dropdown-menu-row a {
+  background-color: #212529;
+  height: 50%;
+  width: 47%;
+}
+.card {
+  width: 50%;
+  margin-top: 5rem !important;
+  border: 1px solid black;
+}
+.card-header {
+  background-color: #212529;
+  width: 100%;
+}
+.card-header h1{
+  color: #ffc106;
+  margin: auto;
+}
+.titleBox {
+  display: flex;
+  justify-content:space-evenly
+}
+div.form-group input,select:hover {
+  background-color: white !important;
+}
+.btn-outline-warning {
+  background-color: #212529;
+}
+/* MOBILE CLASSES */
+.mobileData {
+  margin-top: 3rem;
+  width: 100%;
+  height: 11rem;
+  background-color: white;
+  border: 3px solid#ffc106!important;
+  border-radius: 5px;
+  display: none;
+}
+.mobileData button {
+  margin-right: .5rem;
+}
+.mobileData-header {
+  height: 4rem;
+  width: 100%;
+  border-bottom: 1px solid #ffc106;
+  display: flex;
+  gap: 8.5rem;
+  align-items: center;
+  background-color: #212529;
+  border-bottom: 3px solid #ffc106;
+}
+.mobileData-header p {
+  width: 90%;
+  font-size: 1rem;
+  color: #ffc106;
+  margin: 0;
+  margin-left: 1rem;
+}
+.mobileData-body {
+  margin-left: 1rem;
+  display: flex;
+  gap: 5rem;
+}
+.mobileData-body-earning {
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+.mobileData-body-earning p {
+  margin: 0;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+.mobileData-body-time {
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  margin: auto;
+}
+.mobileSideNav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.placeholder {
+  height: 4rem;
+  margin: auto;
+  border: 3px solid black;
+  border-top: none;
+  width: 75%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white ;
+}
+.mobilePlaceholder {
+  height: 4rem;
+  width: 100%;
+  border: 3px solid#ffc106!important;
+  border-radius: 5px;
+  background-color: #212529;
+  color: #ffc106;
+  font-size: 1rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+.mobilePlaceholder p {
+  margin: auto;
+}
+.form-group {
+  margin-bottom: 0;
+}
+/*  MEDIA QUERIES */
+@media (width: 360px) {
+  .dropdown-menu {
+    width: 360px;
+    transform: translate3d(-320px, 52px, 0px)!important;
+  }
+}
+@media (width: 375px) {
+  .dropdown-menu {
+    width: 375px;
+    transform: translate3d(-335px, 52px, 0px)!important;
+  }
+}
+@media(min-width: 599px) and (max-width: 640px) {
+  .mobileSideNav button {
+    padding: 6px;
+    }
+}
+@media (max-width:420px) {
+  .front-page-container h1 {
+    font-size: 3rem !important;
+    margin-top: 3rem !important;
+  }
+  .front-page-container p {
+    font-size: 1.5rem !important;
+    margin-top: 2rem !important;
+  }
+  .card, .card-header, h1, .card-body, div.form-group {
+    color: black !important;
+    background-color: #e8e5da!important;
+    border: none;
+  }
+  .card-header {
+    border-bottom: 1px solid black;
+  }
+}
+@media (max-width: 599px) {
+  table {
+    display: none;
+  }
+  .mobileData {
+    display: block;
+  }
+  .mobileSideNav button {
+    display: none;
+  }
+  .placeholder {
+    display: none;
+  }
+  .mobilePlaceholder {
+    display: flex;
+  }
+}
+
+

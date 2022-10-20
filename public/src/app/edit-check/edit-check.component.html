@@ -1,0 +1,31 @@
+<!-- <style>
+    input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-left: .5em;
+    /* z-index:2; */
+  }
+  input[type="date"]:focus:before,
+  input[type="date"]:valid:before {
+    content: "";
+  }
+</style> -->
+<div class="card border-black mb-3">
+  <div class="card-header"><h1>Edit Check</h1></div>
+  <div class="card-body">
+    <form (submit)='editCheck(jobForm)' #jobForm='ngForm'>
+      <div class="form-group">
+        <input class="form-control btn-outline-warning" placeholder="{{this.updatedCheck.start[5]}}{{this.updatedCheck.start[6]}}{{this.updatedCheck.start[7]}}{{this.updatedCheck.start[8]}}{{this.updatedCheck.start[9]}}{{this.updatedCheck.start[4]}}{{this.updatedCheck.start[0]}}{{this.updatedCheck.start[1]}}{{this.updatedCheck.start[2]}}{{this.updatedCheck.start[3]}}" type="date"   name="updatedCheck2.start" [(ngModel)]="updatedCheck2.start" required updatedCheck2.start>
+        <label for="">Start: <span>{{this.updatedCheck.start[5]}}{{this.updatedCheck.start[6]}}{{this.updatedCheck.start[7]}}{{this.updatedCheck.start[8]}}{{this.updatedCheck.start[9]}}{{this.updatedCheck.start[4]}}{{this.updatedCheck.start[0]}}{{this.updatedCheck.start[1]}}{{this.updatedCheck.start[2]}}{{this.updatedCheck.start[3]}}</span></label>
+      </div>
+      <div class="form-group">
+        <input class="form-control btn-outline-warning" placeholder="{{this.updatedCheck.end[5]}}{{this.updatedCheck.end[6]}}{{this.updatedCheck.end[7]}}{{this.updatedCheck.end[8]}}{{this.updatedCheck.end[9]}}{{this.updatedCheck.end[4]}}{{this.updatedCheck.end[0]}}{{this.updatedCheck.end[1]}}{{this.updatedCheck.end[2]}}{{this.updatedCheck.end[3]}}" type="date" name="updatedCheck2.end" [(ngModel)]="updatedCheck2.end" required updatedCheck2.end>
+        <label for="">End: <span>{{this.updatedCheck.end[5]}}{{this.updatedCheck.end[6]}}{{this.updatedCheck.end[7]}}{{this.updatedCheck.end[8]}}{{this.updatedCheck.end[9]}}{{this.updatedCheck.end[4]}}{{this.updatedCheck.end[0]}}{{this.updatedCheck.end[1]}}{{this.updatedCheck.end[2]}}{{this.updatedCheck.end[3]}}</span></label>
+      </div>
+    <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Update</button>
+  </form>
+</div>
+  </div>
+
+
+  <!-- onfocus="(this.type='date')" onblur="(this.type='text')" -->

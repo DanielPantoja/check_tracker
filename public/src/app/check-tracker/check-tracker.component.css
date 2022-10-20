@@ -1,0 +1,20 @@
+.front-page-container{
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.front-page-container h1{
+  font-size: 4rem;
+  margin-top: 5rem;
+  line-height: 1;
+}
+.front-page-container p{
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+  line-height: 1;
+}
+svg{
+  margin-top: 5.5rem;
+}

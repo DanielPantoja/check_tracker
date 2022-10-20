@@ -1,0 +1,67 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(!isHandset$ | async) === false"
+  >
+  <!-- by default this opened attribute is false -->
+  <!-- by default the last isHandest does NOT have the !
+    as of the current momment tho it fixes my problem 
+    [opened]="(isHandset$ | async) === false" like dat but super default is with 
+    === true 
+  -->
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item *ngIf="!userIsAuthenticated" [routerLink]="['/login']">Login</a>
+      <a mat-list-item *ngIf="!userIsAuthenticated" [routerLink]="['/signup']">Sign Up</a>
+      <a mat-list-item *ngIf="userIsAuthenticated" (click)="onGetJobs()">Home</a>
+      <a mat-list-item *ngIf="userIsAuthenticated" (click)="onGetChecks()">View Checks</a>
+      <a mat-list-item *ngIf="userIsAuthenticated" (click)="onGetEntrys()">View Entrys</a>
+      <a mat-list-item *ngIf="userIsAuthenticated" (click)="onAddJob()">Add Job</a>
+      <a mat-list-item *ngIf="userIsAuthenticated" (click)="onLogOut()">Log Out</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="#212529">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span [routerLink]="['/']">CheckTracker
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="#ffc106" class="bi bi-check-lg" viewBox="0 0 16 16">
+          <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+        </svg>
+      </span>
+      <div class="mobileSideNav">
+      <button *ngIf="!userIsAuthenticated" class="btn btn-outline-warning my-2 my-sm-0" (click)="onLogin()">Login</button>
+      <button *ngIf="!userIsAuthenticated" class="btn btn-outline-warning my-2 my-sm-0" (click)="onSignUp()">Sign Up</button>
+      <button *ngIf="userIsAuthenticated" class="btn btn-outline-warning my-2 my-sm-0" [routerLink]="['/home']">Home</button>
+      <button *ngIf="userIsAuthenticated" class="btn btn-outline-warning my-2 my-sm-0" (click)="onGetChecks()">Checks</button>
+      <button *ngIf="userIsAuthenticated" class="btn btn-outline-warning my-2 my-sm-0" (click)="onGetEntrys()">Entrys</button>
+      <button *ngIf="userIsAuthenticated" class="btn btn-outline-warning my-2 my-sm-0" (click)="onAddJob()">Add Job</button>
+      <button *ngIf="userIsAuthenticated" class="btn btn-outline-warning my-2 my-sm-0" (click)="onLogOut()">Log Out</button>
+    </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!--
+  [ngClass]="{hidden: !(isHandset$ | async)!.matches}"
+  this is what should trigger the hidden class
+  so that the side nav only appears for handset device
+  then default header bar
+-->
+<!-- /* one thing to note is that mat icon button 
+  for side nav spawns at under 600px
+  then spawns again @845px-960px
+*/ -->
